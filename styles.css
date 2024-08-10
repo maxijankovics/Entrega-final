@@ -109,7 +109,7 @@ body {
     cursor: pointer;
 }
 
-.itemCarrito {
+.cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -117,13 +117,13 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-.itemCarrito img {
+.cart-item img {
     width: 24px;
     height: 24px;
     margin-right: 10px;
 }
 
-.contenedorTotal {
+.total-price {
     font-weight: bold;
     margin-top: 20px;
     text-align: right;

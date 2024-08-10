@@ -84,61 +84,54 @@ botonesFiltrado.forEach(button => {button.addEventListener("click", filtrarPorCa
 
 let carrito = [];
 
-if (localStorage.getItem('carrito')) {
-    carrito = JSON.parse(localStorage.getItem('carrito'));
-} else {
-    carrito = [];
+function agregarAlCarrito(producto) {
+    carrito.push(producto);
+    alert(`${producto.nombre} ha sido agregado al carrito.`);
 }
 
-function agregarAlCarrito(producto) {
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    alert(`${producto.nombre} ha sido agregado al carrito`);
-}
+const cartButton = document.getElementById('cart-button');
+const cartContainer = document.getElementById('cart-container'); // Asegúrate de tener este contenedor en tu HTML
+
+cartButton.addEventListener('click', mostrarCarrito);
 
 function mostrarCarrito() {
-    const contenedorCarrito = document.getElementById("contenedorCarrito");
-    contenedorCarrito.innerHTML = "";
+    cartContainer.innerHTML = ''; // Limpia el contenedor antes de mostrar el carrito
 
     if (carrito.length === 0) {
-        contenedorCarrito.textContent = "El carrito esta vacio";
+        cartContainer.textContent = 'El carrito está vacío.';
         return;
     }
 
     carrito.forEach((producto, index) => {
-        const itemCarrito = document.createElement('div');
-        itemCarrito.classname = "itemCarrito"
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
 
-        const basura = document.createElement('img');
-        basura.src = "./img/basura.png";
-        basura.style.cursor = 'pointer';
-        basura.addEventListener('click', () => eliminarDelCarrito(index));
+        // Icono de basura
+        const removeIcon = document.createElement('img');
+        removeIcon.src = './img/basura.png';
+        removeIcon.alt = 'Eliminar';
+        removeIcon.style.cursor = 'pointer';
+        removeIcon.addEventListener('click', () => eliminarDelCarrito(index));
 
-        const infoProducto = document.createElement('div');
-        infoProducto.textContent = `${producto.nombre} - $${producto.precio}`;
+        const productInfo = document.createElement('div');
+        productInfo.textContent = `${producto.nombre} - $${producto.precio}`;
 
-        itemCarrito.appendChild(basura);
-        itemCarrito.appendChild(infoProducto);
+        cartItem.appendChild(removeIcon);
+        cartItem.appendChild(productInfo);
 
-        contenedorCarrito.appendChild(itemCarrito);
-    })
+        cartContainer.appendChild(cartItem);
+    });
 
-    const precioTotal = carrito.reduce((total, producto) => total + producto.precio, 0);
-    const elementoPrecioTotal = document.createElement('p');
-    elementoPrecioTotal.className = 'precioTotal';
-    elementoPrecioTotal.textContent = `Total: $${precioTotal}`;
-    contenedorCarrito.appendChild(elementoPrecioTotal);
+    // Mostrar el total
+    const totalPrice = carrito.reduce((total, producto) => total + producto.precio, 0);
+    const totalPriceElement = document.createElement('p');
+    totalPriceElement.className = 'total-price';
+    totalPriceElement.textContent = `Total: $${totalPrice}`;
+    cartContainer.appendChild(totalPriceElement);
 }
-
-mostrarCarrito()
 
 function eliminarDelCarrito(index) {
-    carrito.splice(index, 1);
-
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-
-    mostrarCarrito();
+    carrito.splice(index, 1); // Elimina el producto del array carrito
+    mostrarCarrito(); // Vuelve a renderizar el carrito
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    mostrarCarrito();
-});
