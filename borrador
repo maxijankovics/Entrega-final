@@ -1,0 +1,24 @@
+productos.forEach(producto => {
+    const cartaProducto = document.createElement('div');
+    cartaProducto.className = "tarjetaProducto";
+
+    const img = document.createElement('img');
+    img.src = producto.rutaImagen;
+    img.alt = producto.nombre;
+
+    const nombreProducto = document.createElement('h2');
+    nombreProducto.className = "nombre";
+    nombreProducto.textContent = producto.nombre;
+
+    const precioProducto = document.createElement('p');
+    precioProducto.className = "precio";
+    precioProducto.textContent = `$${producto.precio}`;
+
+    cartaProducto.appendChild(img);
+    cartaProducto.appendChild(nombreProducto);
+    cartaProducto.appendChild(precioProducto);
+
+    contenedor.appendChild(cartaProducto);
+
+})
+

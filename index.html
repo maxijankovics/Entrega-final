@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>preEntrega3</title>
+    <!-- Link fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Sedan+SC&display=swap" rel="stylesheet">
+    <!-- Link css -->
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <main>
+        <section class="tituloIndex">
+            <div class="titulo">
+                <h1 style="font-weight: 500; color: white; padding: 10px; text-decoration: underline;">Bienvenidos a Bistro del Mar Ecommerce</h1>
+            </div>
+        </section>
+        <section class="categoriasYBuscador">
+            <div class="contenedor">
+                <div class="buscador">
+                    <input type="text" id="barraBuscadora" placeholder="Busqueda personalizada">
+                </div>
+                <div class="filtros">
+                    <button data-category="menus completos">Menus completos</button>
+                    <button data-category="platos carta">Platos carta</button>
+                    <button data-category="vinos">Vinos</button>
+                    <button data-category="refrescos">Refrescos</button>
+                </div>
+                <div class="carrito">
+                    <img id="iconoCarrito" src="./img/carrito-de-compras.png" alt="Carrito">
+                </div>
+            </div>
+        </section>
+        <div id="contenedorCarrito"></div>
+        <div id="contenedorProductos">
+
+        </div>
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>

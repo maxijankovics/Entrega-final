@@ -1,0 +1,130 @@
+body {
+    background-color: beige;
+    font-family: "Roboto Mono", serif;
+}
+
+/* Titulo y filtros */
+
+.tituloIndex {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    background-color: brown;
+    border: 5px solid black;
+    width: 80%;
+    margin-top: 2rem;
+    font-family: "Sedan SC", serif;
+    border-radius: 10px;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.buscador {
+    display: flex;
+    align-items: center;
+}
+
+.buscador input[type="text"] {
+    padding: 10px;
+    font-size: 15px;
+    border: 2px solid red;
+    border-radius: 4px;
+    font-family: "Roboto Mono", serif;
+}
+
+.filtros button {
+    padding: 5px 10px;
+    font-size: 16px;
+    margin-left: 10px;
+    background-color: #89541a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: "Roboto Mono", serif;
+    cursor: pointer;
+}
+
+.carrito img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Productos */
+
+#contenedorProductos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tarjetaProducto {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    width: 200px;
+    text-align: center;
+    background-color: #462b0f;
+}
+
+.tarjetaProducto img {
+    max-width: 90%;
+    border-radius: 8px;
+}
+
+.nombre {
+    font-size: 18px;
+    font-weight: lighter;
+    margin: 12px 0;
+    color: white;
+    font-family: "Sedan SC", serif;
+}
+
+.precio {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: beige;
+}
+
+/* Carrito */
+
+.botonCarro {
+    padding: 5px;
+    background-color: #89541a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: "Roboto Mono", serif;
+    cursor: pointer;
+}
+
+.itemCarrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.itemCarrito img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.contenedorTotal {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: right;
+}
