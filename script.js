@@ -86,16 +86,27 @@ let carrito = [];
 
 function agregarAlCarrito(producto) {
     carrito.push(producto);
-    alert(`${producto.nombre} ha sido agregado al carrito.`);
+    Toastify({
+        text: `${producto.nombre} ha sido agregado al carrito.`,
+        duration: 3000, 
+        close: true, 
+        gravity: "top", 
+        position: "center", 
+        backgroundColor: "linear-gradient(to right, brown, #89541a)",
+    }).showToast();
+    guardarCarrito();
+    if (cartContainer.style.display !== 'none') {
+        mostrarCarrito();
+    }
 }
 
 const cartButton = document.getElementById('cart-button');
-const cartContainer = document.getElementById('cart-container'); // Asegúrate de tener este contenedor en tu HTML
+const cartContainer = document.getElementById('cart-container');
 
 cartButton.addEventListener('click', mostrarCarrito);
 
 function mostrarCarrito() {
-    cartContainer.innerHTML = ''; // Limpia el contenedor antes de mostrar el carrito
+    cartContainer.innerHTML = '';
 
     if (carrito.length === 0) {
         cartContainer.textContent = 'El carrito está vacío.';
@@ -131,7 +142,27 @@ function mostrarCarrito() {
 }
 
 function eliminarDelCarrito(index) {
-    carrito.splice(index, 1); // Elimina el producto del array carrito
-    mostrarCarrito(); // Vuelve a renderizar el carrito
+    carrito.splice(index, 1);
+    guardarCarrito();
+    mostrarCarrito();
 }
 
+function guardarCarrito() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+function cargarCarrito() {
+    const carritoGuardado = localStorage.getItem('carrito');
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado);
+    }
+}
+
+cargarCarrito();
+mostrarCarrito();
+document.addEventListener('DOMContentLoaded', () => {
+    cargarCarrito();
+    if(carrito.length > 0 && cartContainer.style.display !== 'none') {
+        mostrarCarrito();
+    }
+});
